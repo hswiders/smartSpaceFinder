@@ -97,7 +97,11 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::post('add-animities', 'AnimitiesController@addAnimities')->name('add-animities');
         Route::post('update-animities', 'AnimitiesController@updateAnimities')->name('update-animities');
         Route::post('del-animities', 'AnimitiesController@delAnimities')->name('del-animities');
-
+        
+        Route::get('admin-contact', 'AdminContactDetailController@index')->name('admin-contact');
+        Route::post('update-admin-contact', 'AdminContactDetailController@updateAdminContactDetail')->name('update-admin-contact');
+        Route::get('admin-social', 'SocialLinksController@index')->name('admin-social');
+        Route::post('update-admin-social', 'SocialLinksController@updateSocialLinks')->name('update-admin-social');
 
 
     });
