@@ -59,6 +59,8 @@
                 <ul aria-expanded="false">
                     <li><a href="{{url('admin/contact-type-list')}}">Contact Type List</a></li>
                     <li><a href="{{url('admin/contact-us-list')}}">Contact Us List</a></li>
+                    <li><a href="{{url('admin/admin-contact')}}">Admin Contact</a></li>
+                    <li><a href="{{url('admin/admin-social')}}">Admin Social</a></li>
                 </ul>
             </li>
 

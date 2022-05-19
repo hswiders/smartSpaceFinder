@@ -11,13 +11,13 @@
 	
 	<title>Dashboard</title>
 	
-	<link rel="shortcut icon" type="{{asset('public/assets/image/png')}}" href="{{asset('public/assets/images/favicon.png')}}" />
+	<link rel="shortcut icon" type="{{asset('assets/image/png')}}" href="{{asset('assets/images/favicon.png')}}" />
 
-    <link href="{{asset('public/assets/vendor/datatables/css/jquery.dataTables.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendor/datatables/css/jquery.dataTables.min.css')}}" rel="stylesheet">
 
-	<link href="{{asset('public/assets/vendor/jquery-nice-select/css/nice-select.css')}}" rel="stylesheet">
-	<link href="{{asset('public/assets/vendor/lightgallery/css/lightgallery.min.css')}}" rel="stylesheet">
-    <link href="{{asset('public/assets/css/style.css')}}" rel="stylesheet">
+	<link href="{{asset('assets/vendor/jquery-nice-select/css/nice-select.css')}}" rel="stylesheet">
+	<link href="{{asset('assets/vendor/lightgallery/css/lightgallery.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -53,7 +53,7 @@
         ***********************************-->
         <div class="nav-header">
             <a href="" class="brand-logo" style="background-color: #fff;">
-				<img src="{{ asset('public/assets/images/logo-full.png')}}" alt="" width="100%">
+				<img src="{{ asset('assets/images/logo-full.png')}}" alt="" width="100%">
 				
 
             </a>

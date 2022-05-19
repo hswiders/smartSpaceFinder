@@ -8,8 +8,8 @@
 	<meta name="robots" content="" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Log In</title>
-	<link rel="shortcut icon" type="{{ asset('public/assets/image/png') }}" href="{{ asset('public/assets/images/favicon.png')}}" />
-    <link href="{{ asset('public/assets/css/style.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" type="{{ asset('assets/image/png') }}" href="{{ asset('assets/images/favicon.png')}}" />
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 <style type="text/css">
     .dz-demo-panel{display: none;}
 </style>
@@ -28,7 +28,7 @@
                                 <div class="auth-form">
 									<div class="text-center mb-3" style="background-color: #fff;">
 										<a href="{{url('/')}}">
-                                            <img src="{{ asset('public/assets/images/logo-full.png') }}" alt="" width="100%" style="background-color: #FD683E;"></a>
+                                            <img src="{{ asset('assets/images/logo-full.png') }}" alt="" width="100%" style="background-color: #FD683E;"></a>
 									</div>
                                     <h4 class="text-center mb-4">Sign in your account</h4>
                                     <form class="user" method="post" action="{{route('admin.login')}}"> 
@@ -61,10 +61,10 @@
         Scripts
     ***********************************-->
 
-    <script src="{{ asset('public/assets/vendor/global/global.min.js') }}"></script>
-    <script src="{{ asset('public/assets/js/custom.min.js') }}"></script>
-    <script src="{{ asset('public/assets/js/deznav-init.js') }}"></script>
-    <script src="{{ asset('public/assets/js/styleSwitcher.js') }}"></script>
+    <script src="{{ asset('assets/vendor/global/global.min.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+    <script src="{{ asset('assets/js/deznav-init.js') }}"></script>
+    <script src="{{ asset('assets/js/styleSwitcher.js') }}"></script>
 </body>
 
 </html>

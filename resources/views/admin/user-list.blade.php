@@ -59,9 +59,14 @@
 							<tr>
 								<th>Sn.</th>
 								<th>Name</th>
+								<th>Image</th>
 								<th>Email</th>
+								<th>Phone</th>
+								<th>Address</th>
+								<th>Phone Verified</th>
+								<th>Email Verified</th>
 								<th>Status</th>
-								<th>Join Date</th>
+								<!-- <th>Join Date</th> -->
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -73,8 +78,25 @@
 
 										<tr>
 											<td>{{$sn}}</td>
-											<td>{{$row->name}}</td>
+											<td>{{$row->first_name}} {{$row->last_name}}</td>
+											<td><img src="{{asset($row->image)}}" class="img-fluid"></td>
 											<td>{{$row->email}}</td>
+											<td>{{$row->phonecode}}-{{$row->phone}}</td>
+											<td>{{$row->address}}</td>
+											<td>
+												@if($row->phone_verified==1)
+													<a class="dropdown-item text-success" href="javascript:void(0);"><i class="far fa-check-circle me-1 text-success"></i>Yes</a> 
+												@else 
+													<a class="dropdown-item text-danger " href="javascript:void(0);"><i class="far fa-times-circle me-1 text-danger"></i>No</a>
+												@endif
+											</td>
+											<td>
+												@if($row->email_verified_at!==null)
+													<a class="dropdown-item text-success" href="javascript:void(0);"><i class="far fa-check-circle me-1 text-success"></i>Yes</a> 
+												@else 
+													<a class="dropdown-item text-danger " href="javascript:void(0);"><i class="far fa-times-circle me-1 text-danger"></i>No</a>
+												@endif
+											</td>
 											<td>
 												@if($row->status==0)
 													<a class="dropdown-item text-success" href="javascript:void(0);"><i class="far fa-check-circle me-1 text-success"></i>Active</a> 
@@ -82,7 +104,7 @@
 													<a class="dropdown-item text-danger " href="javascript:void(0);"><i class="far fa-times-circle me-1 text-danger"></i>Blocked</a>
 												@endif
 											</td>
-											<td>{{date('d-m-Y H:i a', strtotime($row->created_at))}}</td>
+											<!-- <td>{{date('d-m-Y H:i a', strtotime($row->created_at))}}</td> -->
 											<td>
 												@if($row->status==0)
 													<a href="{{url('admin/block-unblock')}}?id={{Crypt::encryptString($row->id)}}" onclick="return confirm('Are you soure want to do block?')" class="btn btn-danger shadow btn-xs">Block</a>
@@ -115,4 +137,4 @@
 
     <!--**********************************
         Footer end
-    ***********************************-->
+    ***********************************
