@@ -16,6 +16,12 @@ class User extends Controller
         $data['phonecode'] =  DB::table('countries')->get();
         return view("frontend/user/dashboard" , $data);
     }
+    function verification_pending()
+    {
+        $data['user'] = Auth::user();
+        $data['phonecode'] =  DB::table('countries')->get();
+        return view("frontend/user/email-verification" , $data);
+    }
 
     // logout method to clear the sesson of logged in user
     function logout()

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\ContactUs;
 use Validator;
+use App\Models\User;
+use Auth;
 class HomeController extends Controller
 {
     public function index()
@@ -16,6 +18,14 @@ class HomeController extends Controller
     public function terms()
     {
         return view('frontend.terms');
+    }
+    public function privacy()
+    {
+        return view('frontend.privacy');
+    }
+    public function about()
+    {
+        return view('frontend.about');
     }
     public function contact()
     {
@@ -54,4 +64,56 @@ class HomeController extends Controller
            
         }
     }
+  public function verify_email($id,$token)
+   {
+    $true = false;
+    if($id && $token){
+
+        $data = User::select('*')->where(array('id'=>$id))->first();
+        $redirect = route('login');
+        if (Auth::id()) {
+            $redirect = route('user.dashboard');
+        }
+      if($data){
+        $data = $data->toArray();
+         //print_r($data); die;
+        if($data['email_verified'] == 0){
+          if($data['token'] == $token){
+            
+            $user = User::find($id);
+            $user['email_verified'] = 1;
+            $user['email_verified_at'] = date('Y-m-d');
+            $run = $user->save();
+            if($run){
+              
+              return redirect($redirect)->with('msg', '<div class="alert alert-success">Your email has been verified successfully.</div>');
+              
+            
+            }else
+            {
+              
+              return redirect($redirect)->with('msg', '<div class="alert alert-danger">Server not responding, please try again later.</div>');
+              
+            }
+          } else {
+            
+            return redirect($redirect)->with('msg', '<div class="alert alert-danger">User not authorized or link is expired.</div>');
+          }
+        } else {
+          
+          return redirect($redirect)->with('msg', '<div class="alert alert-success">Your account is already verified, You can access your account.</div>');
+          
+        }
+      } else {
+        
+        return redirect($redirect)->with('msg', '<div class="alert alert-danger">User not authorized or link is expired.</div>');
+        
+      }
+    } else {
+      
+       return redirect($redirect)->with('msg', '<div class="alert alert-danger">User not authorized or invalid token code.</div>');
+      
+    }
+    
+  }
 }

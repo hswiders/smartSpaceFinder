@@ -106,6 +106,13 @@
               $(e).find("[type='submit']").html("REGISTER");
               if(data.status){
                 $('#success_msg').html(data.msg)
+                Swal.fire({
+                  position: '',
+                  icon: 'success',
+                  title: data.msg,
+                  showConfirmButton: false,
+                  timer: 1500
+                })
                 is_otp_sent = true;
                 console.log(data.otp)
                 $('#formChange').html(data.form);
@@ -137,11 +144,11 @@
               $(e).find("[type='submit']").html("Submit OTP");
               if(data.status){
                 Swal.fire({
-                  position: 'top-end',
+                  position: '',
                   icon: 'success',
                   title: data.msg,
-                  showConfirmButton: false,
-                  timer: 1500
+                  showConfirmButton: true,
+                  // timer: 1500
                 }).then((result) => {
                   window.location = data.redirect_location;
                 })

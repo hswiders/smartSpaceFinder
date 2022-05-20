@@ -21,21 +21,21 @@
                     <span class="nav-text">Client List</span>
                 </a>
             </li> -->
-            <li><a href="{{url('admin/property-list')}}" class="ai-icon" aria-expanded="false">
+            {{-- <li><a href="{{url('admin/property-list')}}" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-043-menu"></i>
                     <span class="nav-text">Property List</span>
                 </a>
-            </li>
+            </li> --}}
             <li><a href="{{url('admin/plans-list')}}" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-043-menu"></i>
                     <span class="nav-text">Plans List</span>
                 </a>
             </li>
-            <li><a href="{{url('admin/animities-list')}}" class="ai-icon" aria-expanded="false">
+            {{-- <li><a href="{{url('admin/animities-list')}}" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-043-menu"></i>
                     <span class="nav-text">Animities List</span>
                 </a>
-            </li>
+            </li> --}}
             <!-- <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                     <i class="flaticon-043-menu"></i>
                     <span class="nav-text">Addons Management</span>

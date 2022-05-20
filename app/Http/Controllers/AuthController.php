@@ -101,17 +101,27 @@ class AuthController extends Controller
                 $User->phonecode = $request->phonecode;
                 $User->phone_verified = 1;
                 $User->username = '';
+                $User->token = md5(mt_rand(100000,999999)) ;
                 $User->email = $request->email;
                 $User->password = bcrypt($request->password);
                 $User->save();
                 Session::forget('OTP');
+
+                /*Send email*/
+                $email = $request->email;
+                    $subject="Verify Email!";    
+                    $body = '<p>Hello '. $request->first_name.'</p><p> Please verify your email address.</p>';
+                $body .= '<p style="margin:0;font-size:20px;padding-bottom:5px;color:#2875d7">Please verify your email address.</p>
+                <p style="margin:0;padding:10px 0px">Thanks for registering with us! To finish your sign up, please verify your email address by clicking the button below.</p>
+                <div style="text-align:center"><a href="'.url('').'email-verify/'.$User->id.'/'.$User->token.'" style="background-color:#66A6FF;color:#fff;padding:8px 22px;text-align:center;display:inline-block;line-height:25px;border-radius:3px;font-size:17px;text-decoration:none">Verify Email Address</a></div>';
+                /*send mail function goes here*/ 
             }
             else
             {
                 return response()->json(["otp"=> array("Inavlid OTP")] , 422);  
             }
             if (\Auth::attempt($request->only(["email", "password"]))) {
-                return response()->json(["status"=>true,"msg"=>"You have successfully registered, Login to access your dashboard","redirect_location"=>route("user.dashboard")]);
+                return response()->json(["status"=>true,"msg"=>"We have sent you a verification link to $email , please check it and verify your account.It may be in your Spam/Bulk/Junk folder.","redirect_location"=>route("user.dashboard")]);
                 
             } else {
                 return response()->json([["Invalid credentials"]],422);
@@ -165,7 +175,8 @@ class AuthController extends Controller
                                 <button type="submit" onclick="resend_otp()" class="btn btn-base w-100">Resend OTP</button>
                             </div>
                     </div>';
-            $otp =   $otp = rand(100000, 999999);
+            //$otp =   $otp = rand(100000, 999999);
+            $otp =   1234;
             $phone = '+'.$request->phonecode.$request->phone;
             $msg = 'Your Smart Space OTP verification Code is '.$otp;
             if ($request->phone == '8305995193') {

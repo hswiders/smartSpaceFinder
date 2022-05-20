@@ -21,7 +21,7 @@
                                 <li><a href="{{ route('terms') }}">Terms & Condition</a></li>
                                 <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
                                 <li><a href="{{ route('about') }}">About</a></li>
-                                <li><a href="{{ route('about') }}">Contact</a></li>
+                                <li><a href="{{ route('contact') }}">Contact</a></li>
                             </ul>
                         </div>
                     </div>

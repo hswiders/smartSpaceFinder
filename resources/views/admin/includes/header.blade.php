@@ -11,7 +11,7 @@
 	
 	<title>Dashboard</title>
 	
-	<link rel="shortcut icon" type="{{asset('assets/image/png')}}" href="{{asset('assets/images/favicon.png')}}" />
+	<link rel="shortcut icon" type="{{asset('ddfdf/assets/image/png')}}" href="{{asset('assets/images/favicon.png')}}" />
 
     <link href="{{asset('assets/vendor/datatables/css/jquery.dataTables.min.css')}}" rel="stylesheet">
 

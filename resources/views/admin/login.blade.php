@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Log In</title>
 	<link rel="shortcut icon" type="{{ asset('assets/image/png') }}" href="{{ asset('assets/images/favicon.png')}}" />
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet">
 <style type="text/css">
     .dz-demo-panel{display: none;}
 </style>

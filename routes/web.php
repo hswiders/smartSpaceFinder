@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/terms-and-conditions', 'HomeController@terms')->name('terms');
-Route::get('/privacy-policy', 'HomeController@terms')->name('privacy');
-Route::get('/about', 'HomeController@terms')->name('about');
+Route::get('/privacy-policy', 'HomeController@privacy')->name('privacy');
+Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::get('/verify-email/{id}/{token}', 'HomeController@verify_email')->name('verify_email');
 Route::get('/search-property', 'SearchProperty@index')->name('search-property');
 Route::post('/do-contact-us', 'HomeController@do_contact_us')->name('do-contact-us');
 
@@ -34,12 +35,16 @@ Route::middleware(['guest' , 'preventBack'])->group(function ()
 
 Route::namespace('User')->prefix('user')->name('user.')->group(function()
 {
-    Route::middleware(['auth' , 'preventBack'])->group(function () {
+    Route::middleware(['auth' , 'preventBack' ])->group(function () {
+        Route::get('verification-pending', 'User@verification_pending')->name('verification-pending');
+        Route::get('logout', 'User@logout')->name('logout');
+    }); 
+    Route::middleware(['auth' , 'preventBack' , 'email_verified'])->group(function () {
         Route::get('dashboard', 'User@dashboard')->name('dashboard');
         Route::post('do-update-profile', 'User@doUpdateProfile')->name('do-update-profile');
         Route::post('do-update-image', 'User@doUpdateImage')->name('do-update-image');
         Route::post('do-change-password', 'User@doChangePassword')->name('do-change-password');
-        Route::get('logout', 'User@logout')->name('logout');
+        
         Route::get('add-property', 'PostProperty@index')->name('add-property');
     });    
     
@@ -97,7 +102,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::post('add-animities', 'AnimitiesController@addAnimities')->name('add-animities');
         Route::post('update-animities', 'AnimitiesController@updateAnimities')->name('update-animities');
         Route::post('del-animities', 'AnimitiesController@delAnimities')->name('del-animities');
-        
+
         Route::get('admin-contact', 'AdminContactDetailController@index')->name('admin-contact');
         Route::post('update-admin-contact', 'AdminContactDetailController@updateAdminContactDetail')->name('update-admin-contact');
         Route::get('admin-social', 'SocialLinksController@index')->name('admin-social');
